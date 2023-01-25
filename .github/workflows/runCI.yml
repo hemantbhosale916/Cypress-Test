@@ -23,12 +23,11 @@ jobs:
     - name: Chrome Browser run
       uses: cypress-io/github-action@v4
       with:
-        #build: npm run build
         start: npm run
         browser: chrome
         wait-on-timeout: 300
         spec: ${{ github.event.inputs.specfiles }}
-        record: true
+        #record: true
         parallel: true
         
     - name: Upload screenshot for failed Test Scripts
