@@ -27,7 +27,10 @@ jobs:
         start: npm run
         browser: chrome
         wait-on-timeout: 300
-        # record: true
+        spec: ${{ github.event.inputs.specfiles }}
+        record: true
+        parallel: true
+        
     - name: Upload screenshot for failed Test Scripts
       # parallel: true
 
