@@ -15,25 +15,15 @@ on:
 jobs:
   cypress-run:
     runs-on: self-hosted
-    timeout-minutes: 1000
+    container: cypress/browsers:chrome67
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
-      
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
+      uses: actions/checkout@v2  
     
     - name: Chrome Browser run
-      uses: cypress-io/github-action@v4
-      with:
-        start: npm run
-        browser: chrome
-        wait-on-timeout: 300
-        spec: ${{ github.event.inputs.specfiles }}
-        #record: true
-        parallel: true
-        
+      run: | 
+        npm run cypress/e2e/MSIII/**
+    
     - name: Upload screenshot for failed Test Scripts
       # parallel: true
 
